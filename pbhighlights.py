@@ -4,7 +4,6 @@ import sqlite3
 
 def gethighlightsfromdb(path="books.db"):
     conn = sqlite3.connect('books.db')
-    print("Connected to database")
 
     rows = conn.execute( \
         "select Title, Authors, json_extract(Highlight, '$.text') as Text from Books \
@@ -50,4 +49,3 @@ def writetofile(books, file="highlights.md"):
 if __name__ == "__main__":
     books = gethighlightsfromdb()
     writetofile(books=books)
-    print("success")
